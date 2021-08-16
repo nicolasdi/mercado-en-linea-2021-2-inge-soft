@@ -1,0 +1,75 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <form [formGroup]="calificacionForm" (ngSubmit)="califica(calificacionForm.value)">
+      <br/>
+
+      <div>
+        <input
+          type="text"
+          id="titulo"
+          class="fadeIn first"
+          formControlName="titulo"
+          placeholder="Titulo"
+        />
+
+        <div class="error-notice" *ngIf="titulo.invalid && titulo.touched">
+          <div class="oaerror danger" *ngIf="titulo.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <textarea
+          type="text"
+          id="descripcion"
+          class="fadeIn second"
+          rows="5"
+          formControlName="descripcion"
+          placeholder="Descripción"
+        ></textarea>
+
+        <div class="error-notice" *ngIf="descripcion.invalid && descripcion.touched">
+          <div class="oaerror danger" *ngIf="descripcion.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <br />
+        </div>
+      </div>
+
+      <div>
+        <input
+          type="number"
+          id="calificacion"
+          class="fadeIn third"
+          formControlName="calificacion"
+          min="1"
+          max="5"
+          placeholder="Calificación"
+        />
+
+        <div class="error-notice" *ngIf="calificacion.invalid && calificacion.touched">
+          <div class="oaerror danger" *ngIf="calificacion.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+
+          <div class="oaerror danger" *ngIf="calificacion.errors?.min">
+            <strong>Error</strong> - El valor mínimo de calificación es 1.
+          </div>
+
+          <div class="oaerror danger" *ngIf="calificacion.errors?.max">
+            <strong>Error</strong> - El valor máximo de calificación es 5.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="fadeIn fourth" [disabled]="!calificacionForm.valid">Calificar</button>
+    </form>
+
+  </div>
+</div>

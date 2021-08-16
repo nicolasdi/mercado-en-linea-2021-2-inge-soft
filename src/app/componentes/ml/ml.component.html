@@ -1,0 +1,43 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-icon-top sticky-top navbar-expand-lg navbar-dark bg-primary">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li *ngIf="usuario.comprador" class="nav-item dropdown">
+        <a class="nav-link" role="button" (click)="inicio()">
+          Inicio
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a *ngIf=" usuario.vendedor" class="nav-link" role="button" (click)="crear()">
+          Nuevo Producto
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" role="button" (click)="cerrar()">
+          Cerrar
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+  <form *ngIf="usuario.comprador" class="form-inline" [formGroup]="busquedaForm" (ngSubmit)="buscar()">
+    <input
+      type="text"
+      formControlName="busqueda"
+      class="form-control mr-sm-2"
+      placeholder="Busqueda...."
+    />
+
+    <button type="submit" class="btn btn-outline-light my-2 my-sm-0" [disabled]="!busquedaForm.valid">Buscar</button>
+  </form>
+</nav>
+
+<br/>
+
+<router-outlet></router-outlet>

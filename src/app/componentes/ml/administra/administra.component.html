@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+    <h1 *ngIf="!productos.length" class="text-center"> ¡Aún no has publicado productos! </h1>
+    <ul class="list-group shadow mt-20">
+      <div *ngFor="let producto of productos">
+        <li class="list-group-item">
+          <app-producto [producto]=producto [preview]=false></app-producto>
+
+          <div class="text-center">
+            <button type="button" class="btn btn-primary mr-3" (click)="actualizaProd(producto.id)">Editar</button>
+
+            <button type="button" class="btn btn-primary" (click)="eliminaProd(producto.id)">Eliminar</button>
+          </div>
+
+        </li>
+      </div>
+    </ul>
+
+    <br/>
+  </div>
+</div>

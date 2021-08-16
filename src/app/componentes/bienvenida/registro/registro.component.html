@@ -1,0 +1,97 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <br/>
+
+    <form [formGroup]="registroForm" class="form" (ngSubmit)="registrarUsuario(registroForm.value)">
+      <div>
+        <input
+          type="text"
+          id="username"
+          class="fadeIn first"
+          formControlName="username"
+          placeholder="Username"
+        />
+
+        <div class="error-notice" *ngIf="username.invalid && username.touched">
+          <div class="oaerror danger" *ngIf="username.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="username.errors?.pattern">
+            <strong>Error</strong> - El campo sólo puede contener caracteres alfanuméricos y comenzar por letra.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          id="correo"
+          class="fadeIn second"
+          formControlName="correo"
+          placeholder="Correo electronico"
+        />
+
+        <div class="error-notice" *ngIf="correo.invalid && correo.touched">
+          <div class="oaerror danger" *ngIf="correo.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="correo.errors?.email">
+            <strong>Error</strong> - El formato del correo es inválido.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          id="telefono"
+          class="fadeIn third"
+          formControlName="telefono"
+          placeholder="Teléfono"
+        />
+
+        <div class="error-notice" *ngIf="telefono.invalid && telefono.touched">
+          <div class="oaerror danger" *ngIf="telefono.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="telefono.errors?.pattern">
+            <strong>Error</strong> - El teléfono debe ser 10 dígitos seguidos..
+          </div>
+        </div>
+      </div>
+
+      <label class="fadeIn fourth">Seleccione uno de los siguientes tipos de usuarios:</label>
+
+      <div class="fadeIn fourth">
+        <div class="form-check form-check-inline">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="vendedor"
+            formControlName="vendedor"
+          />
+          <label class="form-check-label" for="vendedor"> Vendedor </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="comprador"
+            formControlName="comprador"
+          />
+          <label class="form-check-label" for="comprador"> Comprador </label>
+        </div>
+      </div>
+
+      <button type="submit" class="fadeIn fifth" [disabled]="!registroForm.valid">
+    Registrarse
+  </button>
+    </form>
+  </div>
+</div>

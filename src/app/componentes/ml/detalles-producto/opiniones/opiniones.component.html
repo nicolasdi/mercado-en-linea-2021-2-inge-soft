@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+    <br/>
+    <h1 *ngIf="!opiniones.length" class="text-center"> Aún no hay opiniones ¡Deja la primera! </h1>
+    <ul class="list-group shadow mt-20">
+      <div *ngFor="let opinion of opiniones">
+        <li class="list-group-item">
+          <app-opinion [opinion]="opinion"></app-opinion>
+        </li>
+      </div>
+    </ul>
+    <br/>
+  </div>
+</div>

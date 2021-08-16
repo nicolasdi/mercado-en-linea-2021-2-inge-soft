@@ -1,0 +1,54 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <br/>
+
+    <form [formGroup]="ingresoForm" class="form" (ngSubmit)="ingreso(ingresoForm.value)">
+
+      <div>
+        <input
+          type="text"
+          id="correo"
+          class="fadeIn first"
+          formControlName="correo"
+          placeholder="Correo eletronico"
+        />
+        <div class="error-notice" *ngIf="correo.invalid && correo.touched">
+          <div class="oaerror danger" *ngIf="correo.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="correo.errors?.email">
+            <strong>Error</strong> - El formato del correo es inválido.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <input
+        type="password"
+        id="contrasenia"
+        class="fadeIn second"
+        formControlName="contrasenia"
+        placeholder="Contraseña"
+        />
+        <div class="error-notice" *ngIf="contrasenia.invalid && contrasenia.touched">
+          <div class="oaerror danger" *ngIf="contrasenia.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="contrasenia.errors?.pattern">
+            <strong>Error</strong> - La contraseña deben ser 16 caracteres alfanuméricos.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="fadeIn third" [disabled]="!ingresoForm.valid">
+        Iniciar Sesión
+      </button>
+
+    </form>
+  </div>
+</div>

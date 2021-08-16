@@ -1,0 +1,85 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <br/>
+    <form [formGroup]="creacionForm" class="form" (ngSubmit)="guardaProducto(creacionForm.value)">
+      <div>
+        <input
+          type="text"
+          id="titulo"
+          class="fadeIn first"
+          formControlName="titulo"
+          placeholder="Titulo"
+        />
+
+        <div class="error-notice" *ngIf="titulo.invalid && titulo.touched">
+          <div class="oaerror danger" *ngIf="titulo.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <textarea
+          type="text"
+          id="descripcion"
+          rows="10"
+          class="fadeIn second"
+          formControlName="descripcion"
+          placeholder="Descripción"
+        > </textarea>
+
+        <div class="error-notice" *ngIf="descripcion.invalid && descripcion.touched">
+          <div class="oaerror danger" *ngIf="descripcion.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <input
+          type="number"
+          id="precio"
+          class="fadeIn third"
+          formControlName="precio"
+          placeholder="Precio"
+          min="0"
+        />
+
+        <div class="error-notice" *ngIf="precio.invalid && precio.touched">
+          <div class="oaerror danger" *ngIf="precio.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="precio.errors?.min">
+            <strong>Error</strong> - El precio mínimo del producto es $0.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          id="foto"
+          class="fadeIn fourth"
+          formControlName="foto"
+          placeholder="URL de la foto"
+        />
+
+        <div class="error-notice" *ngIf="foto.invalid && foto.touched">
+          <div class="oaerror danger" *ngIf="foto.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-group fadeIn sixth" role="group">
+        <button type="submit" [disabled]="!creacionForm.valid">Guardar</button>
+        <button type="button" (click)="regresar()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

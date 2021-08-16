@@ -1,0 +1,17 @@
+<div class="ml-3">
+  <button type="button" class="btn btn-outline-primary mx-auto"  left="100px" (click)="regresar()">Regresar</button>
+</div>
+<br/>
+<div class="text-center">
+  <div class="btn-group btn-group-lg" role="group">
+    <button type="button" class="btn btn-primary" (click)="informacion('descripcion')">Descripcion</button>
+
+    <button type="button" class="btn btn-primary" (click)="informacion('opiniones')">Opiniones</button>
+
+    <button type="button" class="btn btn-primary" (click)="informacion('calificacion')">Calificar</button>
+
+    <button type="button"  class="btn btn-primary" (click)="informacion('compra')">Comprar</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,56 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <br/>
+    <form [formGroup]="compraForm" (ngSubmit)="compra()">
+      <div>
+        <input
+          type="text"
+          id="correo"
+          class="fadeIn first"
+          formControlName="correo"
+          placeholder="Correo de Paypal"
+        />
+
+        <div class="error-notice" *ngIf="correo.invalid && correo.touched">
+          <div class="oaerror danger" *ngIf="correo.errors?.required">
+            <strong>Error</strong> - El campo es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="correo.errors?.email">
+            <strong>Error</strong> - El formato del correo es inválido.
+          </div>
+          <br />
+        </div>
+      </div>
+
+      <div>
+        <input
+          type="password"
+          id="contrasenia"
+          class="fadeIn second"
+          formControlName="contrasenia"
+          placeholder="Contraseña"
+        />
+
+        <div class="error-notice" *ngIf="contrasenia.invalid && contrasenia.touched">
+          <div class="oaerror danger" *ngIf="contrasenia.errors?.required">
+            <strong>Error</strong> - El campos es obligatorio.
+          </div>
+          <div class="oaerror danger" *ngIf="contrasenia.errors?.minlength">
+            <strong>Error</strong> - La contraseña debe contener al menos 8 caracteres.
+          </div>
+          <div class="oaerror danger" *ngIf="contrasenia.errors?.pattern">
+            <strong>Error</strong> - La contraseña solo puede contener caracteres alfanuméricos.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="fadeIn third" [disabled]="!compraForm.valid">Comprar</button>
+    </form>
+
+  </div>
+</div>
